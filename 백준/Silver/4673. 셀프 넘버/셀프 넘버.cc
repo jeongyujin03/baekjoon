@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #define SIZE 10001
 using namespace std;
 
@@ -8,27 +7,21 @@ int main(void){
     cin.tie(0);
     cout.tie(0);
 
-    vector<int> selfNum;
-    for(int i=1; i<=SIZE; i++){
-        bool isAdd = true; //처음에 isAdd를 밖으로 빼서 갱신이 안됐음
-        for(int j=1; j<i; j++){
-            string str = to_string(j);
-            int sum = 0;
-            for(int k=0; k<str.length(); k++){
-                sum += int(str[k] - '0');
-            }
-            if((j+sum) == i){
-                isAdd = false;
-                break;
-            }
+    bool check[SIZE] = {0};
+    for(int i=1; i<SIZE; i++){
+        int sum = 0, tmp = i;
+        while(tmp!=0){
+            sum += tmp % 10;
+            tmp /= 10;
         }
-        if(isAdd){
-            selfNum.push_back(i);
+        if(sum + i < SIZE){
+            check[sum + i] = 1;
         }
     }
-
-    for(int i=0; i<selfNum.size(); i++){
-        cout << selfNum[i] << "\n";
+    for(int i=1; i<SIZE; i++){
+        if(!check[i]){
+            cout << i << '\n';
+        }
     }
     return 0;
 }
