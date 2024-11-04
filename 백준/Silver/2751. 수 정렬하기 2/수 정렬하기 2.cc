@@ -8,7 +8,7 @@ int main(void){
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int N, X;
+    int N;
     cin >> N;
     vector<int> v(N);
     for(int i=0; i<N; i++){
@@ -16,7 +16,7 @@ int main(void){
     }
     sort(v.begin(), v.end());
     for(int i=0; i<N; i++){
-        cout << v.at(i) << '\n';
+        cout << v[i] << '\n';
     }
     return 0;
 }
