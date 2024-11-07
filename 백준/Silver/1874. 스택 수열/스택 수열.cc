@@ -6,39 +6,30 @@ using namespace std;
 int main(void){
     int n, x;
     cin >> n;
-    stack<int> s, num;
-    vector<char> res;
-    for(int i=n; i>=1; i--){
-        num.push(i);
-    }
+    stack<int> s;
+    vector<char> v;
+    int cnt = 1;
 
     for(int i=0; i<n; i++){
         cin >> x;
-        if(s.empty() || s.top() < x){
-            s.push(num.top());
-            num.pop();
-            res.push_back('+');
-
-            while(s.top() != x){
-                s.push(num.top());
-                res.push_back('+');
-                num.pop();
-            }
+        while(cnt <= x){
+            s.push(cnt);
+            v.push_back('+');
+            cnt++;
         }
 
         if(s.top() == x){
-            res.push_back('-');
             s.pop();
-            continue;
+            v.push_back('-');
         }
-
-        if(s.top() > x){
+        else{
             cout << "NO";
             return 0;
         }
     }
-    for(int i=0; i<res.size(); i++){
-        cout << res[i] << "\n";
+
+    for(int i=0; i<v.size(); i++){
+        cout << v[i] << "\n";
     }
     return 0;
 }
