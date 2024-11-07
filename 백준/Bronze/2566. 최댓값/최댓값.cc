@@ -5,7 +5,7 @@ using namespace std;
 
 struct maxArr{
     int _num = 0;
-    int _row = 0, _col = 0;
+    int _row = 1, _col = 1;
 };
 
 int main(void){
@@ -16,7 +16,7 @@ int main(void){
         for(int j=0; j<SIZE; j++){
             cin >> arr[i][j];
 
-            if(m._num <= arr[i][j]){
+            if(m._num < arr[i][j]){
                 m._num = arr[i][j];
                 m._row = i + 1;
                 m._col = j + 1;
