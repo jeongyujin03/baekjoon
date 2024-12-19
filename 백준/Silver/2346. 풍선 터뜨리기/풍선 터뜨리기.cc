@@ -22,13 +22,11 @@ int main(void){
         cout << dq.front().first << " ";
         int loop = dq.front().second;
         dq.pop_front();
+
         if(dq.empty()) break;
 
-        if(loop > 0) loop--;
-        loop %= (int)dq.size();
-
         if(loop > 0){
-            for(int i=0; i<loop; i++){
+            for(int i=0; i<loop-1; i++){
                 dq.push_back(dq.front());
                 dq.pop_front();
             }
