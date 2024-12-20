@@ -1,38 +1,35 @@
 #include <iostream>
 #include <queue>
-#include <utility>
 #include <cmath>
+#include <utility>
+#define FASTIO ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 using namespace std;
 
 struct Compare
 {
-    bool operator()(pair<int, int> p1, pair<int,int> p2){
-    if(p1.first == p2.first){
-        return p1.second > p2.second;
+    bool operator()(int a, int b){
+        if(abs(a) == abs(b)){
+            return a > b;
+        }
+        return abs(a) > abs(b);
     }
-    return p1.first > p2.first;
-}
 };
 
 int main(void){
-    ios::sync_with_stdio(0);
-    cin.tie();
-    cout.tie();
-
-    int N;
-    long long int x;
-    priority_queue<pair<int,int>, vector<pair<int,int>>, Compare> pq;
+    FASTIO;
+    int N, x;
+    priority_queue<int, vector<int>, Compare> pq;
 
     cin >> N;
     while(N--){
         cin >> x;
         if(x){
-            pq.push({abs(x), x});
-        } else{
+            pq.push(x);
+        } else {
             if(pq.empty()){
                 cout << 0;
             } else {
-                cout << pq.top().second;
+                cout << pq.top();
                 pq.pop();
             }
             cout << "\n";
